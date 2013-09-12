@@ -7,6 +7,9 @@ class Student < ActiveRecord::Base
   validate :valid_age?
   validate :valid_phone_number?
 
+  has_many :teacher_assignments
+  has_many :teachers, through: :teacher_assignments
+
   def name
     "#{self.first_name} #{self.last_name}"
   end
